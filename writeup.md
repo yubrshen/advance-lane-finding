@@ -812,7 +812,7 @@ Here is a one frame of the processing outcome.
 
 ![img](./output_images/lane_center_test5.jpg)
 
-In the top left corner, it shows the orignal frame. The bottom left corner shows the undistorted image. The bottom right corners shows the lane finding states. The top right shows the 
+In the top left corner, it shows the original frame. The bottom left corner shows the undistorted image. The bottom right corners shows the lane finding states. The top right shows the 
 pre-prossed images. 
 
 All the lane finding code can be found at [tracker.py](./tracker.py)
