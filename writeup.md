@@ -1,43 +1,5 @@
 ****Advanced Lane Finding Project****
 
-<div id="table-of-contents">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents">
-<ul>
-<li><a href="#orgheadline1">1. The goals / steps of this project are the following:</a></li>
-<li><a href="#orgheadline2">2. [Rubric]() Points</a>
-<ul>
-<li><a href="#orgheadline3">2.1. Camera Calibration</a>
-<ul>
-<li><a href="#orgheadline4">2.1.1. 1. Briefly state how you computed the camera matrix and distortion coefficients. Provide an example of a distortion corrected calibration image.</a></li>
-</ul>
-</li>
-<li><a href="#orgheadline5">2.2. Pipeline (single images)</a>
-<ul>
-<li><a href="#orgheadline6">2.2.1. 1. Provide an example of a distortion-corrected image.</a></li>
-<li><a href="#orgheadline7">2.2.2. 2. Describe how (and identify where in your code) you used color transforms, gradients or other methods to create a thresholded binary image. Provide an example of a binary image result.</a></li>
-<li><a href="#orgheadline8">2.2.3. 3. Describe how (and identify where in your code) you performed a perspective transform and provide an example of a transformed image.</a></li>
-<li><a href="#orgheadline9">2.2.4. 4. Describe how (and identify where in your code) you identified lane-line pixels and fit their positions with a polynomial?</a></li>
-<li><a href="#orgheadline10">2.2.5. 5. Describe how (and identify where in your code) you calculated the radius of curvature of the lane and the position of the vehicle with respect to center.</a></li>
-<li><a href="#orgheadline11">2.2.6. 6. Provide an example image of your result plotted back down onto the road such that the lane area is identified clearly.</a></li>
-</ul>
-</li>
-<li><a href="#orgheadline12">2.3. Pipeline (video)</a>
-<ul>
-<li><a href="#orgheadline13">2.3.1. 1. Provide a link to your final video output.  Your pipeline should perform reasonably well on the entire project video (wobbly lines are ok but no catastrophic failures that would cause the car to drive off the road!).</a></li>
-</ul>
-</li>
-<li><a href="#orgheadline14">2.4. Discussion</a>
-<ul>
-<li><a href="#orgheadline15">2.4.1. 1. Briefly discuss any problems / issues you faced in your implementation of this project.  Where will your pipeline likely fail?  What could you do to make it more robust?</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</div>
-</div>
-
 # The goals / steps of this project are the following:
 
 -   Compute the camera calibration matrix and distortion coefficients given a set of chessboard images.
@@ -121,6 +83,14 @@ I applied this distortion correction to the test image using the \`cv2.undistort
 ![img](./output_images/Undistorted.jpg)
 
 The correction looks effective. 
+
+1.  How to produce the pickle file ./calibration\_pickle.p
+
+    ==:
+    
+        python ./calibrate.py
+    
+    This file will be used in undistorting video frames, and images. 
 
 ## Pipeline (single images)
 
@@ -850,6 +820,22 @@ Here is a picture showing how the points identified on the lane edges, and forme
 
 The blue line is the fitted lines. Note, it survives the shades well in this situation. 
 
+1.  How to run the pipeline for single image?
+
+    Execute the following command in command shell:
+    
+    ==:
+    
+        python ./pipeline.py
+    
+    It will process all the ./test\_images/\*.jpg files, producing the corresponding results at ./output\_images/lane\_center\_\*.jpg 
+    
+    It requires the existence of ./calibration\_pickle.p, to produce that, execute the following at command shell:
+    
+    ==:
+    
+        python ./calibrate.py
+
 ## Pipeline (video)
 
 The following code drive the video frame processing. 
@@ -887,6 +873,16 @@ The following code drive the video frame processing.
         # End of for v_p
     
         return 0
+
+1.  How to run the pipeline for video processing?
+
+    Run the following command at the shell:
+    
+    ==:
+    
+        python ./videoProcess.py
+    
+    It will process all the **.mp4 files in the current directory, and produce the processed corresponding files in ./output\_images/marked\_**.mp4
 
 ### 1. Provide a link to your final video output.  Your pipeline should perform reasonably well on the entire project video (wobbly lines are ok but no catastrophic failures that would cause the car to drive off the road!).
 
